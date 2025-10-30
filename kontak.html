@@ -1,0 +1,163 @@
+<main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Contact</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li class="current">Contact</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <div class="mb-5">
+            <iframe style="width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7931.578495459778!2d106.8078161!3d-6.291407!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1fa599ef523%3A0xce4d3f317f5ed3f4!2sMenara%20165%2C%20Jl.%20TB%20Simatupang%2C%20RT.3%2FRW.3%2C%20Cilandak%20Tim.%2C%20Ps.%20Minggu%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2012560!5e0!3m2!1sid!2sid!4v1733657573341!5m2!1sid!2sid" frameborder="0" allowfullscreen=""></iframe>
+            </div><!-- End Google Maps -->
+
+      <div class="container" data-aos="fade">
+
+        <div class="row gy-5 gx-lg-5">
+
+          <div class="col-lg-4">
+
+            <div class="info">
+              <h3>Hubungi Kami</h3>
+              <p>Untuk Pemesanan dan Informasi Lebih Lanjut Hubungi Kami</p>
+
+              <div class="info-item d-flex">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h4>Location:</h4>
+                  <p>Menara 165 Lt.14 Unit E Jl. TB Simatupang No.Kav.1, Desa/Kelurahan
+                    Cilandak Timur, Kec. Pasar Minggu, Kota Adm. Jakarta Selatan, Provinsi
+                    DKI Jakarta,
+                    Kode Pos: 12560</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h4>Email:</h4>
+                  <p>abizarddc@gmail.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex">
+                <i class="bi bi-phone flex-shrink-0"></i>
+                <div>
+                  <h4>Call:</h4>
+                  <p>+62 821 2826 4499</p>
+                  
+                </div>
+                
+              </div><!-- End Info Item -->
+             
+              <div class="info-item d-flex">
+             
+              <i class="bi bi-whatsapp"></i>
+                <div>
+                  <h4>WhatsApp:</h4>
+                 
+                  <a href="https://wa.me/+6282128264499">+62 821 2826 4499</a>
+                  <!-- 878 9570 8194 -->
+                </div>
+                
+              </div><!-- End Info Item -->
+            </div>
+
+          </div>
+
+          <div class="col-lg-8">
+          <form id="emailForm" method="post" action="" role="form" class="php-email-form">
+          @csrf
+          <div class="row">
+              <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+              </div>
+          </div>
+          <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
+          </div>
+          <div class="form-group mt-3">
+              <textarea class="form-control" name="message" placeholder="Message" required=""></textarea>
+          </div>
+          <div class="my-3">
+              <div class="loading">Loading</div>
+              <!-- <div class="error-message"></div> -->
+              <div class="sent-message"></div>
+          </div>
+          <div class="text-center"><button type="submit">Send Message</button></div>
+      </form>
+          </div><!-- End Contact Form -->
+        </div>
+      </div>
+    </section><!-- /Contact Section -->
+  </main>
+  <!-- Modal -->
+<div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="responseModalLabel">Informasi</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="responseMessage">
+            <!-- Pesan akan ditampilkan di sini -->
+        </div>
+        <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+          </div>
+    </div>
+</div>
+</div>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    document.getElementById('emailForm').addEventListener('submit', function (e) {
+      e.preventDefault(); // Mencegah reload halaman
+  
+      const formData = new FormData(this);
+  
+      fetch('/send', {
+          method: 'POST',
+          body: formData,
+          headers: {
+              'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+          },
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              document.getElementById('responseMessage').textContent = data.message;
+          } else {
+              document.getElementById('responseMessage').textContent = data.message || 'Terjadi kesalahan.';
+          }
+          // Tampilkan modal
+          new bootstrap.Modal(document.getElementById('responseModal')).show();
+      })
+      .catch(error => {
+          document.getElementById('responseMessage').textContent = 'Terjadi kesalahan saat mengirim permintaan.';
+          new bootstrap.Modal(document.getElementById('responseModal')).show();
+      });
+  });
+  // Kosongkan form saat modal ditutup
+document.getElementById('responseModal').addEventListener('hidden.bs.modal', function () {
+    document.getElementById('emailForm').reset(); // Reset semua input dalam form
+});
+</script>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
