@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media - Website Saya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin: 0;
+        }
+        
+        .nav-menu a {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #f0f5ff;
+            color: #2575fc;
+        }
+        
+        .nav-menu a.active {
+            background-color: #2575fc;
+            color: white;
+        }
+        
+        .separator {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            margin: 30px 0;
+        }
+        
+        .media-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .media-title {
+            font-size: 2.2rem;
+            color: #2575fc;
+            margin-bottom: 15px;
+        }
+        
+        .media-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .media-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .tab-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        
+        .tab-btn:hover, .tab-btn.active {
+            background: #2575fc;
+            color: white;
+            border-color: #2575fc;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #2575fc;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #2575fc;
+        }
+        
+        /* Video Gallery Styles */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+        }
+        
+        .video-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+            transition: background 0.3s ease;
+        }
+        
+        .video-card:hover .video-thumbnail::after {
+            background: rgba(0,0,0,0.1);
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        
+        .video-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        /* Audio Player Styles */
+        .audio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .audio-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .audio-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .audio-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .audio-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f0f5ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2575fc;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        
+        .audio-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        
+        .audio-player {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .audio-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .play-btn {
+            background: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .play-btn:hover {
+            background: #1c68e3;
+        }
+        
+        .audio-duration {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Image Gallery Styles */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        
+        .image-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            aspect-ratio: 1 / 1;
+        }
+        
+        .image-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .image-item {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-card:hover .image-item {
+            transform: scale(1.1);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-card:hover .image-overlay {
+            transform: translateY(0);
+        }
+        
+        .image-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .image-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Document Styles */
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .doc-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .doc-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .doc-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background: #f0f5ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2575fc;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .doc-info {
+            flex: 1;
+        }
+        
+        .doc-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .doc-download {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #2575fc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+        
+        .doc-download:hover {
+            background: #1c68e3;
+        }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .lightbox-caption {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        .website-link {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .website-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .video-grid,
+            .audio-grid,
+            .image-grid,
+            .doc-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .media-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 200px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Selamat Datang di Website Saya</h1>
+            <p>Halaman Media</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="karya.html">Karya & Project</a></li>
+                    <li><a href="media.html" class="active">Media</a></li>
+                    <li><a href="informasi.html">Informasi</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="separator"></div>
+        
+        <div class="media-header">
+            <h2 class="media-title">Koleksi Media</h2>
+            <p class="media-subtitle">Jelajahi berbagai jenis konten media termasuk video, audio, gambar, dan dokumen.</p>
+        </div>
+        
+        <div class="media-tabs">
+            <button class="tab-btn active" data-tab="video">Video</button>
+            <button class="tab-btn" data-tab="audio">Audio</button>
+            <button class="tab-btn" data-tab="images">Gambar</button>
+            <button class="tab-btn" data-tab="documents">Dokumen</button>
+        </div>
+        
+        <!-- Video Tab -->
+        <div class="tab-content active" id="video-tab">
+            <h3 class="section-title">Video Tutorial & Presentasi</h3>
+            
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail" data-video="video1">
+                        ▶
+                    </div>
+                    <div class="video-info">
+                        <h4 class="video-title">Tutorial Web Development Dasar</h4>
+                        <p class="video-desc">Panduan lengkap untuk pemula yang ingin memulai karir di web development.</p>
+                        <div class="video-meta">
+                            <span>Durasi: 15:30</span>
+                            <span>Ditonton: 1.2K</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail" data-video="video2">
+                        ▶
+                    </div>
+                    <div class="video-info">
+                        <h4 class="video-title">UI/UX Design Process</h4>
+                        <p class="video-desc">Proses lengkap mendesain antarmuka pengguna yang menarik dan fungsional.</p>
+                        <div class="video-meta">
+                            <span>Durasi: 22:15</span>
+                            <span>Ditonton: 856</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail" data-video="video3">
+                        ▶
+                    </div>
+                    <div class="video-info">
+                        <h4 class="video-title">Mobile App Development</h4>
+                        <p class="video-desc">Membangun aplikasi mobile cross-platform dengan React Native.</p>
+                        <div class="video-meta">
+                            <span>Durasi: 18:45</span>
+                            <span>Ditonton: 1.5K</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail" data-video="video4">
+                        ▶
+                    </div>
+                    <div class="video-info">
+                        <h4 class="video-title">Database Design & Optimization</h4>
+                        <p class="video-desc">Teknik mendesain dan mengoptimalkan database untuk performa terbaik.</p>
+                        <div class="video-meta">
+                            <span>Durasi: 25:10</span>
+                            <span>Ditonton: 723</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Audio Tab -->
+        <div class="tab-content" id="audio-tab">
+            <h3 class="section-title">Podcast & Audio Materi</h3>
+            
+            <div class="audio-grid">
+                <div class="audio-card">
+                    <div class="audio-header">
+                        <div class="audio-icon">🎵</div>
+                        <h4 class="audio-title">Teknologi Web Terkini</h4>
+                    </div>
+                    <div class="audio-player">
+                        <input type="range" class="audio-progress" value="0" max="100" style="width: 100%;">
+                    </div>
+                    <div class="audio-controls">
+                        <button class="play-btn">▶</button>
+                        <span class="audio-duration">12:30</span>
+                    </div>
+                </div>
+                
+                <div class="audio-card">
+                    <div class="audio-header">
+                        <div class="audio-icon">🎵</div>
+                        <h4 class="audio-title">Tips Karir di Bidang IT</h4>
+                    </div>
+                    <div class="audio-player">
+                        <input type="range" class="audio-progress" value="0" max="100" style="width: 100%;">
+                    </div>
+                    <div class="audio-controls">
+                        <button class="play-btn">▶</button>
+                        <span class="audio-duration">18:15</span>
+                    </div>
+                </div>
+                
+                <div class="audio-card">
+                    <div class="audio-header">
+                        <div class="audio-icon">🎵</div>
+                        <h4 class="audio-title">Trend AI & Machine Learning</h4>
+                    </div>
+                    <div class="audio-player">
+                        <input type="range" class="audio-progress" value="0" max="100" style="width: 100%;">
+                    </div>
+                    <div class="audio-controls">
+                        <button class="play-btn">▶</button>
+                        <span class="audio-duration">22:45</span>
+                    </div>
+                </div>
+                
+                <div class="audio-card">
+                    <div class="audio-header">
+                        <div class="audio-icon">🎵</div>
+                        <h4 class="audio-title">Digital Marketing Strategy</h4>
+                    </div>
+                    <div class="audio-player">
+                        <input type="range" class="audio-progress" value="0" max="100" style="width: 100%;">
+                    </div>
+                    <div class="audio-controls">
+                        <button class="play-btn">▶</button>
+                        <span class="audio-duration">15:20</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Images Tab -->
+        <div class="tab-content" id="images-tab">
+            <h3 class="section-title">Galeri Gambar & Desain</h3>
+            
+            <div class="image-grid">
+                <div class="image-card">
+                    <img src="https://via.placeholder.com/400x400/2575fc/ffffff?text=UI+Design" alt="UI Design" class="image-item">
+                    <div class="image-overlay">
+                        <div class="image-title">UI Design Mockup</div>
+                        <div class="image-desc">Desain antarmuka untuk aplikasi mobile</div>
+                    </div>
+                </div>
+                
+                <div class="image-card">
+                    <img src="https://via.placeholder.com/400x400/6a11cb/ffffff?text=Web+Design" alt="Web Design" class="image-item">
+                    <div class="image-overlay">
+                        <div class="image-title">Website Layout</div>
+                        <div class="image-desc">Struktur layout website modern</div>
+                    </div>
+                </div>
+                
+                <div class="image-card">
+                    <img src="https://via.placeholder.com/400x400/2575fc/ffffff?text=Logo+Design" alt="Logo Design" class="image-item">
+                    <div class="image-overlay">
+                        <div class="image-title">Brand Identity</div>
+                        <div class="image-desc">Desain logo dan identitas merek</div>
+                    </div>
+                </div>
+                
+                <div class="image-card">
+                    <img src="https://via.placeholder.com/400x400/6a11cb/ffffff?text=Icon+Set" alt="Icon Set" class="image-item">
+                    <div class="image-overlay">
+                        <div class="image-title">Icon Collection</div>
+                        <div class="image-desc">Kumpulan ikon untuk proyek digital</div>
+                    </div>
+                </div>
+                
+                <div class="image-card">
+                    <img src="https://via.placeholder.com/400x400/2575fc/ffffff?text=Dashboard" alt="Dashboard" class="image-item">
+                    <div class="image-overlay">
+                        <div class="image-title">Admin Dashboard</div>
+                        <div class="image-desc">Desain dashboard untuk sistem admin</div>
+                    </div>
+                </div>
+                
+                <div class="image-card">
+                    <img src="https://via.placeholder.com/400x400/6a11cb/ffffff?text=Mobile+App" alt="Mobile App" class="image-item">
+                    <div class="image-overlay">
+                        <div class="image-title">App Screens</div>
+                        <div class="image-desc">Kumpulan screen aplikasi mobile</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Documents Tab -->
+        <div class="tab-content" id="documents-tab">
+            <h3 class="section-title">Dokumen & Materi Pembelajaran</h3>
+            
+            <div class="doc-grid">
+                <div class="doc-card">
+                    <div class="doc-icon">📄</div>
+                    <div class="doc-info">
+                        <h4 class="doc-title">Panduan HTML & CSS</h4>
+                        <div class="doc-meta">
+                            <span>PDF Document</span>
+                            <span>2.5 MB</span>
+                        </div>
+                        <a href="#" class="doc-download">Download</a>
+                    </div>
+                </div>
+                
+                <div class="doc-card">
+                    <div class="doc-icon">📄</div>
+                    <div class="doc-info">
+                        <h4 class="doc-title">JavaScript Fundamentals</h4>
+                        <div class="doc-meta">
+                            <span>PDF Document</span>
+                            <span>3.1 MB</span>
+                        </div>
+                        <a href="#" class="doc-download">Download</a>
+                    </div>
+                </div>
+                
+                <div class="doc-card">
+                    <div class="doc-icon">📄</div>
+                    <div class="doc-info">
+                        <h4 class="doc-title">UI/UX Design Principles</h4>
+                        <div class="doc-meta">
+                            <span>PDF Document</span>
+                            <span>4.2 MB</span>
+                        </div>
+                        <a href="#" class="doc-download">Download</a>
+                    </div>
+                </div>
+                
+                <div class="doc-card">
+                    <div class="doc-icon">📄</div>
+                    <div class="doc-info">
+                        <h4 class="doc-title">Database Design Guide</h4>
+                        <div class="doc-meta">
+                            <span>PDF Document</span>
+                            <span>2.8 MB</span>
+                        </div>
+                        <a href="#" class="doc-download">Download</a>
+                    </div>
+                </div>
+                
+                <div class="doc-card">
+                    <div class="doc-icon">📄</div>
+                    <div class="doc-info">
+                        <h4 class="doc-title">Project Management Template</h4>
+                        <div class="doc-meta">
+                            <span>DOCX Document</span>
+                            <span>1.2 MB</span>
+                        </div>
+                        <a href="#" class="doc-download">Download</a>
+                    </div>
+                </div>
+                
+                <div class="doc-card">
+                    <div class="doc-icon">📄</div>
+                    <div class="doc-info">
+                        <h4 class="doc-title">Web Security Best Practices</h4>
+                        <div class="doc-meta">
+                            <span>PDF Document</span>
+                            <span>3.5 MB</span>
+                        </div>
+                        <a href="#" class="doc-download">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="separator"></div>
+    </div>
+    
+    <!-- Video Modal -->
+    <div class="lightbox" id="video-modal">
+        <button class="lightbox-close" id="video-close">&times;</button>
+        <div class="video-placeholder" style="width: 80%; height: 70%; background: #000; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+            Video Player
+        </div>
+        <div class="lightbox-caption" id="video-caption">Video Tutorial</div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Website Saya Created By Budianto, S.Kom, M.Kom.</p>
+            <p>Website: <a href="#" class="website-link">Perm Preschools Federation</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+        
+        // Video thumbnail click
+        const videoThumbnails = document.querySelectorAll('.video-thumbnail');
+        const videoModal = document.getElementById('video-modal');
+        const videoClose = document.getElementById('video-close');
+        
+        videoThumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                const videoTitle = thumbnail.closest('.video-card').querySelector('.video-title').textContent;
+                document.getElementById('video-caption').textContent = videoTitle;
+                videoModal.classList.add('active');
+            });
+        });
+        
+        videoClose.addEventListener('click', () => {
+            videoModal.classList.remove('active');
+        });
+        
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+            }
+        });
+        
+        // Audio player functionality
+        const playButtons = document.querySelectorAll('.play-btn');
+        
+        playButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const isPlaying = this.textContent === '❚❚';
+                
+                if (isPlaying) {
+                    this.textContent = '▶';
+                } else {
+                    this.textContent = '❚❚';
+                    
+                    // Reset other buttons
+                    playButtons.forEach(btn => {
+                        if (btn !== this) {
+                            btn.textContent = '▶';
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Image lightbox
+        const imageCards = document.querySelectorAll('.image-card');
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <button class="lightbox-close">&times;</button>
+            <img src="" alt="" class="lightbox-content">
+            <div class="lightbox-caption"></div>
+        `;
+        document.body.appendChild(lightbox);
+        
+        const lightboxImg = lightbox.querySelector('.lightbox-content');
+        const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+        const lightboxClose = lightbox.querySelector('.lightbox-close');
+        
+        imageCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('.image-item');
+                const title = card.querySelector('.image-title').textContent;
+                
+                lightboxImg.src = img.src;
+                lightboxCaption.textContent = title;
+                lightbox.classList.add('active');
+            });
+        });
+        
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

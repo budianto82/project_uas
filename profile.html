@@ -1,193 +1,415 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Profile</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-<style>
-        body{
-        font-family: monospace;
-        font-size: 13pt;
-    }
-    
-    th{
-        text-align: left;
-    }
-    
-    img{
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    
-    .kotak{
-        border: 1px solid black;
-        width: 60%;
-        margin: 10px auto;
-        padding: 20px;
-    }
-    
-    .judul{
-        text-align: center;
-            background: yellow;
-    }
-    
-    .blok{
-        overflow: hidden;
-    }
-    
-    .kiri{
-        width: 15%;
-        float: left;
-    }
-    
-    .kanan{
-        width: 70%;
-        padding:0px 20px;	
-        float: left;
-    }
-    
-    @media only screen and (max-width: 768px) {
-        .kotak{
-            width: 100%;
-            padding: 0px;
-            border: none;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Website Saya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+              font-family: 'Poppins', sans-serif;
         }
         
-        .kiri{
-            width: 100%;
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
         }
-    
-        .kanan{
-            width: 100%;
-            padding: 0;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-    }
-</style>
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin: 0;
+        }
+        
+        .nav-menu a {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #f0f5ff;
+            color: #2575fc;
+        }
+        
+        .nav-menu a.active {
+            background-color: #2575fc;
+            color: white;
+        }
+        
+        .separator {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            margin: 30px 0;
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .profile-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f0f5ff;
+            margin: 0 auto 20px;
+            display: block;
+        }
+        
+        .profile-name {
+            font-size: 1.2rem;
+            color: #2575fc;
+            margin-bottom: 5px;
+        }
+        
+        .profile-title {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .profile-bio {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f5ff;
+            color: #2575fc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: #2575fc;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .profile-details {
+            flex: 2;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: #2575fc;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f5ff;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .skill {
+            background: #f0f5ff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #2575fc;
+        }
+        
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f5ff;
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+        
+        .experience-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .experience-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .education-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f5ff;
+        }
+        
+        .education-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .education-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f5ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2575fc;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        .website-link {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .website-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .profile-container {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-	<div class="kotak">
- 
-		<div class="judul">
-			<h1>BIODATA DIRI</h1>
-		</div>
- 
-		<div class="blok">
- 
-			<h2>Informasi</h2>			
-			
-			<div class="kiri">
-				<img src="profile.jpg"></img>			
-			</div>
- 
-			<div class="kanan">
-				<table>
-					<tr>
-						<th>Nama</th>
-						<th>:</th>
-						<td>Budianto, S.Kom., M.Kom.</td>
-					</tr>
-					<tr>
-						<th>Asal</th>
-						<th>:</th>
-						<td>Ciamis</td>
-					</tr>
-					<tr>
-						<th>Tgl.Lahir</th>
-						<th>:</th>
-						<td>9 November 1982</td>
-					</tr>
-					<tr>
-						<th>Agama</th>
-						<th>:</th>
-						<td>Islam</td>
-					</tr>
-					<tr>
-						<th>Alamat</th>
-						<th>:</th>
-						<td>Jl.Rambutan Sasak Tinggi No.9 Rt.003/RW.011 Ciputat 
-                           </td>
-					</tr>
-					<tr>
-						<th>Email</th>
-						<th>:</th>
-						<td>dosen03140@unpam.ac.id</td>
-					</tr>
-					<tr>
-						<th>No.HP</th>
-						<th>:</th>
-						<td>+62877-5490-9920</td>
-					</tr>
-					<tr>
-						<th>Youtube</th>
-						<th>:</th>
-						<td><a href="https://www.malasngoding.com">www.malasngoding.com</a></td>
-					</tr>
-				</table>
-				
-			</div>
- 
-		</div>		
- 
-		<div class="blok">
- 
-			<h2>Pendidikan</h2>			
-			
-			<div>
-				<ul>
-					<li><b>1989 - 1995</b> SD Kedungwuluh II</li>
-					<li><b>1995 - 1998</b> SMPN 1 Padaherang</li>
-					<li><b>1998 - 2001</b> SMK YPS 1 Ciamis</li>
-					<li><b>2011 - 2015</b> Universitas Pamulang</li>
-                    <li><b>2018 - 2021</b> Universitas Pamulang</li>
-				</ul>
-			</div>
- 
-		</div>
- 
-		<div class="blok">
- 
-			<h2>Pengalaman Kerja</h2>
-			
-			<div>
-				<ul>
-					<li>
-						<b>2003 - 2012</b> - IT Support - di Di PT. Indomarco Prismatama
-					</li>
-					<li>
-						<b>2012 - 2015</b> - Junior Programmer Java - di Di PT. SBRI Indonesia
-					</li>
-                    <li>
-						<b>2015 - 2017</b> - Database Administrator - di Di PT. Immobi Solusi Prima
-					</li>
-                    <li>
-						<b>2017 - Now</b> - Full Stack Developer ,DBA - di Di RS.Pusat Pertamina
-					</li>
-                    <li>
-						<b>Now</b> - Dosen Universitas Pamulang
-					</li>
-				</ul>
-			</div>
- 
-		</div>
- 
-		<div class="blok">
- 
-			<h2>Keahlian</h2>			
-			
-			<div>
-				<ul>
-					<li>HTML</li>
-					<li>CSS</li>
-					<li>JavaScript</li>
-					<li>PHP</li>
-					<li>CodeIgniter</li>
-					<li>Laravel</li>
-					<li>NodeJS</li>					
-				</ul>
-			</div>
- 
-		</div>
-	</div>
+    <header>
+        <div class="container">
+            <h1>Selamat Datang di Website Saya</h1>
+            <p>Halaman Profile</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="profile.html" class="active">Profile</a></li>
+                    <li><a href="karya.html">Karya & Project</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="informasi.html">Informasi</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="separator"></div>
+        
+        <div class="profile-container">
+            <div class="profile-card">
+                <img src="budi.jpg" alt="Profile Picture" class="profile-image">
+                <h5 class="profile-name">Budianto, S.Kom, M.Kom</h5>
+                <p class="profile-title">Web Developer & Dosen</p>
+                
+                <div class="profile-bio">
+                    <p>Seorang profesional di bidang teknologi informasi dengan spesialisasi dalam pengembangan web dan pendidikan teknologi. Memiliki pengalaman lebih dari 10 tahun dalam industri IT dan pendidikan tinggi.</p>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">@</a>
+                </div>
+            </div>
+            
+            <div class="profile-details">
+                <h3 class="section-title">Keahlian</h3>
+                <div class="skills-container">
+                    <span class="skill">HTML/CSS</span>
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">PHP</span>
+                    <span class="skill">Python</span>
+                    <span class="skill">MySQL</span>
+                    <span class="skill">React</span>
+                    <span class="skill">Node.js</span>
+                    <span class="skill">UI/UX Design</span>
+                    <span class="skill">Project Management</span>
+                </div>
+                
+                <h3 class="section-title">Pengalaman Kerja</h3>
+                <div class="experience-item">
+                    <div class="experience-title">Dosen Teknik Informatika</div>
+                    <div class="experience-date">Universitas Teknologi Indonesia | 2018 - Sekarang</div>
+                    <p>Mengajar mata kuliah pemrograman web, basis data, dan rekayasa perangkat lunak. Membimbing penelitian mahasiswa dan mengembangkan kurikulum program studi.</p>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-title">Web Developer Senior</div>
+                    <div class="experience-date">PT. Solusi Digital Indonesia | 2015 - 2018</div>
+                    <p>Mengembangkan aplikasi web untuk klien korporat, memimpin tim pengembang, dan menerapkan metodologi agile dalam pengembangan produk.</p>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-title">Web Developer</div>
+                    <div class="experience-date">CV. Kreasi Digital | 2012 - 2015</div>
+                    <p>Membangun website untuk berbagai klien, mulai dari perusahaan kecil hingga menengah. Fokus pada pengembangan front-end dan back-end.</p>
+                </div>
+                
+                <h3 class="section-title">Pendidikan</h3>
+               
+                <div class="education-item">
+                    <div class="education-title">Magister Komputer (M.Kom)</div>
+                    <div class="education-date">Universitas Indonesia | 2018 - 2021</div>
+                </div>
+                
+                 <div class="education-item">
+                    <div class="education-title">Sarjana Komputer (S.Kom)</div>
+                    <div class="education-date">Universitas Indonesia | 2011 - 2015</div>
+                </div>
+                <h3 class="section-title">Kontak</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">@</div>
+                        <div>budianto.unpam82@gmail.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>+62 877 5490 9920</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>Jakarta, Indonesia</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="separator"></div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Website Saya Created By Budianto, S.Kom, M.Kom.</p>
+            <p>Website: <a href="#" class="website-link">Perm Preschools Federation</a></p>
+        </div>
+    </footer>
 </body>
 </html>

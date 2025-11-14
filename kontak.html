@@ -1,163 +1,622 @@
-<main class="main">
-
-    <!-- Page Title -->
-    <div class="page-title dark-background">
-      <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Contact</h1>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="/">Home</a></li>
-            <li class="current">Contact</li>
-          </ol>
-        </nav>
-      </div>
-    </div><!-- End Page Title -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <div class="mb-5">
-            <iframe style="width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7931.578495459778!2d106.8078161!3d-6.291407!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1fa599ef523%3A0xce4d3f317f5ed3f4!2sMenara%20165%2C%20Jl.%20TB%20Simatupang%2C%20RT.3%2FRW.3%2C%20Cilandak%20Tim.%2C%20Ps.%20Minggu%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2012560!5e0!3m2!1sid!2sid!4v1733657573341!5m2!1sid!2sid" frameborder="0" allowfullscreen=""></iframe>
-            </div><!-- End Google Maps -->
-
-      <div class="container" data-aos="fade">
-
-        <div class="row gy-5 gx-lg-5">
-
-          <div class="col-lg-4">
-
-            <div class="info">
-              <h3>Hubungi Kami</h3>
-              <p>Untuk Pemesanan dan Informasi Lebih Lanjut Hubungi Kami</p>
-
-              <div class="info-item d-flex">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h4>Location:</h4>
-                  <p>Menara 165 Lt.14 Unit E Jl. TB Simatupang No.Kav.1, Desa/Kelurahan
-                    Cilandak Timur, Kec. Pasar Minggu, Kota Adm. Jakarta Selatan, Provinsi
-                    DKI Jakarta,
-                    Kode Pos: 12560</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h4>Email:</h4>
-                  <p>abizarddc@gmail.com</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex">
-                <i class="bi bi-phone flex-shrink-0"></i>
-                <div>
-                  <h4>Call:</h4>
-                  <p>+62 821 2826 4499</p>
-                  
-                </div>
-                
-              </div><!-- End Info Item -->
-             
-              <div class="info-item d-flex">
-             
-              <i class="bi bi-whatsapp"></i>
-                <div>
-                  <h4>WhatsApp:</h4>
-                 
-                  <a href="https://wa.me/+6282128264499">+62 821 2826 4499</a>
-                  <!-- 878 9570 8194 -->
-                </div>
-                
-              </div><!-- End Info Item -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - Website Saya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin: 0;
+        }
+        
+        .nav-menu a {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #f0f5ff;
+            color: #2575fc;
+        }
+        
+        .nav-menu a.active {
+            background-color: #2575fc;
+            color: white;
+        }
+        
+        .separator {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            margin: 30px 0;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .contact-title {
+            font-size: 2.2rem;
+            color: #2575fc;
+            margin-bottom: 15px;
+        }
+        
+        .contact-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .info-card h3 {
+            font-size: 1.4rem;
+            color: #2575fc;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f5ff;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .contact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f0f5ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2575fc;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h4 {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .contact-details p {
+            color: #666;
+            margin-bottom: 3px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f5ff;
+            color: #2575fc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: #2575fc;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .form-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #2575fc;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #1c68e3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        .map-container {
+            margin-top: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .map-placeholder {
+            height: 300px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .faq-section {
+            margin-top: 60px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #2575fc;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #2575fc;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f9f9f9;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 200px;
+        }
+        
+        .faq-toggle {
+            color: #2575fc;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        .website-link {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .website-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Selamat Datang di Website Saya</h1>
+            <p>Halaman Kontak</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="karya.html">Karya & Project</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="informasi.html">Informasi</a></li>
+                    <li><a href="kontak.html" class="active">Kontak</a></li>
+                </ul>
             </div>
-
-          </div>
-
-          <div class="col-lg-8">
-          <form id="emailForm" method="post" action="" role="form" class="php-email-form">
-          @csrf
-          <div class="row">
-              <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
-              </div>
-              <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
-              </div>
-          </div>
-          <div class="form-group mt-3">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
-          </div>
-          <div class="form-group mt-3">
-              <textarea class="form-control" name="message" placeholder="Message" required=""></textarea>
-          </div>
-          <div class="my-3">
-              <div class="loading">Loading</div>
-              <!-- <div class="error-message"></div> -->
-              <div class="sent-message"></div>
-          </div>
-          <div class="text-center"><button type="submit">Send Message</button></div>
-      </form>
-          </div><!-- End Contact Form -->
         </div>
-      </div>
-    </section><!-- /Contact Section -->
-  </main>
-  <!-- Modal -->
-<div class="modal fade" id="responseModal" tabindex="-1" aria-labelledby="responseModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="responseModalLabel">Informasi</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </nav>
+    
+    <div class="container">
+        <div class="separator"></div>
+        
+        <div class="contact-header">
+            <h2 class="contact-title">Hubungi Saya</h2>
+            <p class="contact-subtitle">Silakan hubungi saya melalui form berikut atau informasi kontak di bawah ini. Saya akan merespons secepat mungkin.</p>
         </div>
-        <div class="modal-body" id="responseMessage">
-            <!-- Pesan akan ditampilkan di sini -->
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-card">
+                    <h3>Informasi Kontak</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>budianto.unpam82@gmail.com</p>
+                            <p></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h4>Telepon/WhatsApp</h4>
+                            <p>+62 877 5490 9920</p>
+                           
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Alamat</h4>
+                            <p>Jl.Rambutan Sasak Tinggi No.9 Ciputat</p>
+                            <p>Tangerang Selatan Selatan, 15411</p>
+                            <p>Banten - Indonesia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-details">
+                            <h4>Jam Kerja</h4>
+                            <p>Senin - Jumat: 09.00 - 17.00 WIB</p>
+                            <p>Sabtu: 09.00 - 14.00 WIB</p>
+                            <p>Minggu: Libur</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Media Sosial</h3>
+                    <p>Ikuti saya di media sosial untuk update terbaru:</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="LinkedIn">in</a>
+                        <a href="#" class="social-link" title="Instagram">ig</a>
+                        <a href="#" class="social-link" title="Twitter">X</a>
+                        <a href="#" class="social-link" title="Facebook">f</a>
+                        <a href="#" class="social-link" title="GitHub">git</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <div class="form-card">
+                    <h3 style="color: #2575fc; margin-bottom: 20px;">Kirim Pesan</h3>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nama Lengkap</label>
+                            <input type="text" id="name" class="form-control" placeholder="Masukkan nama lengkap" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Masukkan alamat email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subjek</label>
+                            <input type="text" id="subject" class="form-control" placeholder="Masukkan subjek pesan" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Pesan</label>
+                            <textarea id="message" class="form-control" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-block">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-          </div>
+        
+        <div class="map-container">
+            <div class="map-placeholder">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d33610.0822924928!2d106.69288188904679!3d-6.334225397032995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5a6e26dc3cd%3A0xccd6344b8021119d!2sUniversitas%20Pamulang%20Kampus%202%20(UNPAM%20Viktor)!5e0!3m2!1sid!2sid!4v1761686341932!5m2!1sid!2sid" 
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h3 class="section-title">Pertanyaan Umum</h3>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Berapa lama waktu respons untuk pertanyaan?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Saya biasanya merespons dalam waktu 24 jam pada hari kerja. Untuk pertanyaan di akhir pekan, respons akan diberikan pada hari Senin.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah tersedia konsultasi online?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, saya menyediakan konsultasi online melalui Zoom, Google Meet, atau platform lainnya. Silakan hubungi untuk mengatur jadwal.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Bagaimana cara kerja sama project?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Proses kerja sama dimulai dengan diskusi kebutuhan, pembuatan proposal, persetujuan, dan eksekusi project dengan komunikasi yang transparan.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah tersedia layanan darurat?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Untuk layanan darurat terkait maintenance website atau masalah kritis, tersedia layanan khusus dengan biaya tambahan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="separator"></div>
     </div>
-</div>
-</div>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Website Saya Created By Budianto, S.Kom, M.Kom.</p>
+            <p>Website: <a href="#" class="website-link">Perm Preschools Federation</a></p>
+        </div>
+    </footer>
 
-<script>
-    document.getElementById('emailForm').addEventListener('submit', function (e) {
-      e.preventDefault(); // Mencegah reload halaman
-  
-      const formData = new FormData(this);
-  
-      fetch('/send', {
-          method: 'POST',
-          body: formData,
-          headers: {
-              'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
-          },
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data.success) {
-              document.getElementById('responseMessage').textContent = data.message;
-          } else {
-              document.getElementById('responseMessage').textContent = data.message || 'Terjadi kesalahan.';
-          }
-          // Tampilkan modal
-          new bootstrap.Modal(document.getElementById('responseModal')).show();
-      })
-      .catch(error => {
-          document.getElementById('responseMessage').textContent = 'Terjadi kesalahan saat mengirim permintaan.';
-          new bootstrap.Modal(document.getElementById('responseModal')).show();
-      });
-  });
-  // Kosongkan form saat modal ditutup
-document.getElementById('responseModal').addEventListener('hidden.bs.modal', function () {
-    document.getElementById('emailForm').reset(); // Reset semua input dalam form
-});
-</script>
-
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            
+            // Show success message (in a real app, you would send the data to a server)
+            alert(`Terima kasih ${name}! Pesan Anda dengan subjek "${subject}" telah berhasil dikirim. Saya akan merespons ke ${email} secepatnya.`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // FAQ toggle functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

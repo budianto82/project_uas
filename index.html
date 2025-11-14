@@ -1,21 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Membuat Frame berdasarkan baris</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Saya</title>
+    <link href="style.css" type="text/css" rel="stylesheet">
 </head>
-
-<frameset rows="25%,65%,10%">
-    <!-- Bagian Header -->
-    <frame src="header.html">
-
-    <!-- Bagian Tengah: menu dan konten -->
-    <frameset cols="15%,85%">
-        <frame src="menu.html">
-        <frame name="kiri" src="home.html">
-    </frameset>
-
-    <!-- Bagian Footer -->
-    <frame src="footer.html">
-</frameset>
-
+<body>
+    <header>
+        <div class="container">
+            <h1>Selamat Datang di Website Saya</h1>
+            <p>Halaman Utama Website Sederhana</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="karya.html">Karya & Project</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="informasi.html">Informasi</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="separator"></div>
+        
+        <div class="content">
+            <h2>Pemrograman Web dengan HTML</h2>
+            <p>Selamat datang di halaman utama website sederhana ini. Di sini Anda dapat menemukan informasi tentang pemrograman web menggunakan HTML dan teknologi web lainnya.</p>
+            <p>Website ini dibuat sebagai contoh implementasi struktur web yang baik dengan navigasi yang jelas dan konten yang informatif.</p>
+        </div>
+        
+        <div class="separator"></div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Website Saya Created By Budianto, S.Kom. M.Kom.</p>
+            <p>Website: <a href="#" class="website-link">Perm Preschools Federation</a></p>
+        </div>
+    </footer>
+</body>
 </html>

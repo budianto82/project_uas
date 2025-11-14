@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi - Website Saya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin: 0;
+        }
+        
+        .nav-menu a {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #f0f5ff;
+            color: #2575fc;
+        }
+        
+        .nav-menu a.active {
+            background-color: #2575fc;
+            color: white;
+        }
+        
+        .separator {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            margin: 30px 0;
+        }
+        
+        .info-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .info-title {
+            font-size: 2.2rem;
+            color: #2575fc;
+            margin-bottom: 15px;
+        }
+        
+        .info-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .info-list {
+            list-style: none;
+        }
+        
+        .info-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .info-list li::before {
+            content: '✓';
+            color: #2575fc;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2575fc;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #2575fc;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 30px);
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 30px);
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid white;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid white;
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: #2575fc;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .timeline-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2575fc;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px #2575fc;
+        }
+        
+        .faq-section {
+            margin: 50px 0;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #2575fc;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #2575fc;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f9f9f9;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            color: #2575fc;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        .pricing-section {
+            margin: 50px 0;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.popular::before {
+            content: 'Paling Populer';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #2575fc;
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .pricing-header {
+            padding: 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+        }
+        
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .pricing-period {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .pricing-features {
+            padding: 25px;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            color: #2575fc;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .pricing-action {
+            padding: 0 25px 25px;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background: #1c68e3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #2575fc;
+            color: #2575fc;
+        }
+        
+        .btn-outline:hover {
+            background: #2575fc;
+            color: white;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        .website-link {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .website-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                padding-left: 70px !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                display: none;
+            }
+            
+            .timeline-marker {
+                left: 30px;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Selamat Datang di Website Saya</h1>
+            <p>Halaman Informasi</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="karya.html">Karya & Project</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="informasi.html" class="active">Informasi</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="separator"></div>
+        
+        <div class="info-header">
+            <h2 class="info-title">Informasi Lengkap</h2>
+            <p class="info-subtitle">Temukan berbagai informasi penting tentang layanan, statistik, timeline, dan pertanyaan umum.</p>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="card-header">
+                    <div class="card-icon">💼</div>
+                    <h3 class="card-title">Layanan</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="info-list">
+                        <li>Konsultasi Web Development</li>
+                        <li>Pembuatan Website Perusahaan</li>
+                        <li>Desain UI/UX Aplikasi</li>
+                        <li>Optimasi SEO Website</li>
+                        <li>Maintenance & Support</li>
+                        <li>Training & Workshop</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="card-header">
+                    <div class="card-icon">🛠️</div>
+                    <h3 class="card-title">Teknologi</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="info-list">
+                        <li>HTML5, CSS3, JavaScript</li>
+                        <li>React, Vue, Angular</li>
+                        <li>Node.js, PHP, Python</li>
+                        <li>MySQL, MongoDB, Firebase</li>
+                        <li>Figma, Adobe XD, Sketch</li>
+                        <li>Git, Docker, AWS</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="card-header">
+                    <div class="card-icon">📈</div>
+                    <h3 class="card-title">Keunggulan</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="info-list">
+                        <li>Pengalaman 10+ Tahun</li>
+                        <li>Tim Profesional Bersertifikat</li>
+                        <li>Support 24/7</li>
+                        <li>Garansi 1 Tahun</li>
+                        <li>Harga Kompetitif</li>
+                        <li>Kepuasan Klien 98%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Proyek Selesai</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Klien Puas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Tahun Pengalaman</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Tingkat Kepuasan</div>
+            </div>
+        </div>
+        
+        <div class="timeline-section">
+            <h3 class="section-title">Timeline Perkembangan</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2012 - 2014</div>
+                        <h4 class="timeline-title">Awal Karir & Pembelajaran</h4>
+                        <p class="timeline-desc">Memulai karir sebagai web developer junior, menguasai teknologi dasar web development dan mengerjakan proyek-proyek kecil.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2015 - 2017</div>
+                        <h4 class="timeline-title">Spesialisasi & Pengembangan</h4>
+                        <p class="timeline-desc">Fokus pada pengembangan aplikasi web kompleks, mempelajari framework modern, dan mulai mengelola tim kecil.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018 - 2020</div>
+                        <h4 class="timeline-title">Ekspansi & Konsultasi</h4>
+                        <p class="timeline-desc">Memulai layanan konsultasi IT, bekerja dengan klien korporat, dan mengembangkan solusi enterprise.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - Sekarang</div>
+                        <h4 class="timeline-title">Inovasi & Pendidikan</h4>
+                        <p class="timeline-desc">Fokus pada teknologi terkini seperti AI dan IoT, serta berbagi pengetahuan melalui workshop dan training.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq-section">
+            <h3 class="section-title">Pertanyaan Umum</h3>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Berapa lama waktu pengerjaan sebuah website?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Waktu pengerjaan bervariasi tergantung kompleksitas proyek. Website company profile sederhana biasanya selesai dalam 2-3 minggu, sedangkan aplikasi web kompleks bisa memakan waktu 2-4 bulan.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah tersedia layanan maintenance setelah proyek selesai?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, kami menyediakan paket maintenance dengan berbagai pilihan, mulai dari maintenance dasar hingga paket premium dengan support 24/7 dan update berkala.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Bagaimana proses pembayaran proyek?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pembayaran biasanya dibagi menjadi 3 tahap: 30% di awal, 40% setelah tahap development, dan 30% setelah proyek selesai dan disetujui klien.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah bisa request fitur khusus?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tentu saja. Kami terbuka untuk mendiskusikan kebutuhan khusus Anda. Fitur custom akan dikaji kelayakan teknis dan dampaknya terhadap timeline serta budget proyek.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pricing-section">
+            <h3 class="section-title">Paket Layanan</h3>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h4 class="pricing-title">Basic</h4>
+                        <div class="pricing-price">Rp 5JT</div>
+                        <div class="pricing-period">/proyek</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Website Company Profile</li>
+                            <li>5 Halaman</li>
+                            <li>Desain Responsif</li>
+                            <li>Form Kontak</li>
+                            <li>Optimasi Dasar SEO</li>
+                            <li>Support 3 Bulan</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-action">
+                        <a href="#" class="btn btn-outline">Pilih Paket</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="pricing-header">
+                        <h4 class="pricing-title">Professional</h4>
+                        <div class="pricing-price">Rp 15JT</div>
+                        <div class="pricing-period">/proyek</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Website E-commerce</li>
+                            <li>Halaman Tidak Terbatas</li>
+                            <li>Desain Custom</li>
+                            <li>Sistem Admin</li>
+                            <li>Integrasi Payment</li>
+                            <li>Support 1 Tahun</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-action">
+                        <a href="#" class="btn">Pilih Paket</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h4 class="pricing-title">Enterprise</h4>
+                        <div class="pricing-price">Rp 35JT</div>
+                        <div class="pricing-period">/proyek</div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Aplikasi Web Custom</li>
+                            <li>Fitur Sesuai Kebutuhan</li>
+                            <li>Integrasi API</li>
+                            <li>Database Complex</li>
+                            <li>Analytics Dashboard</li>
+                            <li>Support 2 Tahun</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-action">
+                        <a href="#" class="btn btn-outline">Pilih Paket</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="separator"></div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Website Saya Created By Budianto, S.Kom, M.Kom.</p>
+            <p>Website: <a href="#" class="website-link">Perm Preschools Federation</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Animate stats counter
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target;
+                    const target = parseInt(statNumber.textContent);
+                    let current = 0;
+                    const increment = target / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            statNumber.textContent = target + (statNumber.textContent.includes('+') ? '+' : '');
+                            clearInterval(timer);
+                        } else {
+                            statNumber.textContent = Math.floor(current) + (statNumber.textContent.includes('+') ? '+' : '');
+                        }
+                    }, 30);
+                    
+                    observer.unobserve(statNumber);
+                }
+            });
+        }, observerOptions);
+        
+        statNumbers.forEach(stat => {
+            observer.observe(stat);
+        });
+    </script>
+</body>
+</html>

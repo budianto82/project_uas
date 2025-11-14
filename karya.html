@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karya - Website Saya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin: 0;
+        }
+        
+        .nav-menu a {
+            display: block;
+            padding: 15px 25px;
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #f0f5ff;
+            color: #2575fc;
+        }
+        
+        .nav-menu a.active {
+            background-color: #2575fc;
+            color: white;
+        }
+        
+        .separator {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #ddd, transparent);
+            margin: 30px 0;
+        }
+        
+        .karya-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .karya-title {
+            font-size: 2.2rem;
+            color: #2575fc;
+            margin-bottom: 15px;
+        }
+        
+        .karya-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #2575fc;
+            color: white;
+            border-color: #2575fc;
+        }
+        
+        .karya-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .karya-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+        }
+        
+        .karya-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .karya-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .karya-item:hover .karya-img {
+            transform: scale(1.05);
+        }
+        
+        .karya-info {
+            padding: 20px;
+        }
+        
+        .karya-item-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .karya-item-desc {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .karya-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .karya-tag {
+            background: #f0f5ff;
+            color: #2575fc;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #2575fc;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #2575fc;
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .lightbox-caption {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        .website-link {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .website-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .karya-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Selamat Datang di Website Saya</h1>
+            <p>Halaman Proyek</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="karya.html" class="active">Karya & Project</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="informasi.html">Informasi</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="separator"></div>
+        
+        <div class="karya-header">
+            <h2 class="karya-title">Karya & Project</h2>
+            <p class="karya-subtitle">Kumpulan karya dan projek dalam bidang web development, desain, dan teknologi yang telah saya kerjakan.</p>
+        </div>
+        
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="design">UI/UX Design</button>
+            <button class="filter-btn" data-filter="mobile">Mobile App</button>
+            <button class="filter-btn" data-filter="other">Lainnya</button>
+        </div>
+        
+        <div class="karya-grid">
+            <div class="karya-item" data-category="web">
+                <img src="https://via.placeholder.com/400x300/2575fc/ffffff?text=Website+E-commerce" alt="Website E-commerce" class="karya-img">
+                <div class="karya-info">
+                    <h3 class="karya-item-title">E-commerce Platform</h3>
+                    <p class="karya-item-desc">Platform e-commerce dengan fitur lengkap untuk penjualan online.</p>
+                    <div class="karya-tags">
+                        <span class="karya-tag">HTML/CSS</span>
+                        <span class="karya-tag">JavaScript</span>
+                        <span class="karya-tag">PHP</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="karya-item" data-category="design">
+                <img src="https://via.placeholder.com/400x300/6a11cb/ffffff?text=UI+Design" alt="UI Design" class="karya-img">
+                <div class="karya-info">
+                    <h3 class="karya-item-title">Mobile App UI Design</h3>
+                    <p class="karya-item-desc">Desain antarmuka untuk aplikasi mobile banking dengan UX yang optimal.</p>
+                    <div class="karya-tags">
+                        <span class="karya-tag">Figma</span>
+                        <span class="karya-tag">UI Design</span>
+                        <span class="karya-tag">Prototype</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="karya-item" data-category="web">
+                <img src="https://via.placeholder.com/400x300/2575fc/ffffff?text=Company+Profile" alt="Company Profile" class="karya-img">
+                <div class="karya-info">
+                    <h3 class="karya-item-title">Company Profile Website</h3>
+                    <p class="karya-item-desc">Website company profile dengan desain modern dan responsive.</p>
+                    <div class="karya-tags">
+                        <span class="karya-tag">HTML/CSS</span>
+                        <span class="karya-tag">Bootstrap</span>
+                        <span class="karya-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="karya-item" data-category="mobile">
+                <img src="https://via.placeholder.com/400x300/6a11cb/ffffff?text=Mobile+App" alt="Mobile App" class="karya-img">
+                <div class="karya-info">
+                    <h3 class="karya-item-title">Task Management App</h3>
+                    <p class="karya-item-desc">Aplikasi mobile untuk manajemen tugas dengan fitur kolaborasi tim.</p>
+                    <div class="karya-tags">
+                        <span class="karya-tag">React Native</span>
+                        <span class="karya-tag">Firebase</span>
+                        <span class="karya-tag">Redux</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="karya-item" data-category="design">
+                <img src="https://via.placeholder.com/400x300/2575fc/ffffff?text=Web+Design" alt="Web Design" class="karya-img">
+                <div class="karya-info">
+                    <h3 class="karya-item-title">Landing Page Design</h3>
+                    <p class="karya-item-desc">Desain landing page untuk produk digital dengan conversion rate tinggi.</p>
+                    <div class="karya-tags">
+                        <span class="karya-tag">Figma</span>
+                        <span class="karya-tag">UI/UX</span>
+                        <span class="karya-tag">Wireframe</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="karya-item" data-category="other">
+                <img src="https://via.placeholder.com/400x300/6a11cb/ffffff?text=Data+Visualization" alt="Data Visualization" class="karya-img">
+                <div class="karya-info">
+                    <h3 class="karya-item-title">Data Visualization Dashboard</h3>
+                    <p class="karya-item-desc">Dashboard untuk visualisasi data dengan grafik interaktif.</p>
+                    <div class="karya-tags">
+                        <span class="karya-tag">D3.js</span>
+                        <span class="karya-tag">Chart.js</span>
+                        <span class="karya-tag">API</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="separator"></div>
+    </div>
+    
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <img src="" alt="" class="lightbox-img" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Website Saya Created By Budianto, S.Kom, M.Kom.</p>
+            <p>Website: <a href="#" class="website-link">Perm Preschools Federation</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Filter Karya
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const karyaItems = document.querySelectorAll('.karya-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                karyaItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.getElementById('lightbox-close');
+        
+        karyaItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('.karya-img');
+                const title = item.querySelector('.karya-item-title').textContent;
+                
+                lightboxImg.src = img.src;
+                lightboxCaption.textContent = title;
+                lightbox.classList.add('active');
+            });
+        });
+        
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
