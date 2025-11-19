@@ -590,45 +590,48 @@
             <h3 class="section-title">Video Tutorial & Presentasi</h3>
             
             <div class="video-grid">
-                <div class="video-card">
-                    <div class="video-thumbnail" data-video="video1">
+                 <div class="video-card">
+                    <div class="video-thumbnail" data-src="video/Belajar HTML _ Struktur Dasar HTML.mp4"
+                         style="background-image: url('images/html.png'); background-size: cover; background-position: center;">
                         ▶
                     </div>
+
                     <div class="video-info">
-                        <h4 class="video-title" href="https://www.youtube.com/watch?v=LooycZiMn6s">Tutorial Web Development Dasar</h4>
-                        <p class="video-desc">Panduan lengkap untuk pemula yang ingin memulai karir di web development.</p>
+                        <h4 class="video-title">Belajar HTML : Struktur Dasar HTML</h4>
+                        <p class="video-desc">Panduan lengkap untuk pemula yang ingin memulai membuat Website dengan HTML.</p>
                         <div class="video-meta">
-                            <span>Durasi: 15:30</span>
-                            <span>Ditonton: 1.2K</span>
-                        </div>
+                            <span>Durasi: 14:45</span>
+                         </div>
+                    </div>
+                </div>
+                
+               <div class="video-card">
+                    <div class="video-thumbnail" data-src="video/FRAMESET.mp4"
+                         style="background-image: url('images/html.png'); background-size: cover; background-position: center;">
+                        ▶
+                    </div>
+
+                    <div class="video-info">
+                        <h4 class="video-title">Belajar HTML : Merancang Layout dengan FRAMESET</h4>
+                        <p class="video-desc">Panduan lengkap untuk pemula yang ingin memulai membuat Website dengan HTML.</p>
+                        <div class="video-meta">
+                            <span>Durasi: 25:30</span>
+                         </div>
                     </div>
                 </div>
                 
                 <div class="video-card">
-                    <div class="video-thumbnail" data-video="video2">
+                    <div class="video-thumbnail" data-src="video/Belajar HTML _ Penggunaan Paragraf.mp4"
+                         style="background-image: url('images/html.png'); background-size: cover; background-position: center;">
                         ▶
                     </div>
+
                     <div class="video-info">
-                        <h4 class="video-title">UI/UX Design Process</h4>
-                        <p class="video-desc">Proses lengkap mendesain antarmuka pengguna yang menarik dan fungsional.</p>
+                        <h4 class="video-title">Belajar HTML : Penggunaan Paragraf</h4>
+                        <p class="video-desc">Panduan lengkap untuk pemula yang ingin memulai membuat Website dengan HTML.</p>
                         <div class="video-meta">
-                            <span>Durasi: 22:15</span>
-                            <span>Ditonton: 856</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="video-card">
-                    <div class="video-thumbnail" data-video="video3">
-                        ▶
-                    </div>
-                    <div class="video-info">
-                        <h4 class="video-title">Mobile App Development</h4>
-                        <p class="video-desc">Membangun aplikasi mobile cross-platform dengan React Native.</p>
-                        <div class="video-meta">
-                            <span>Durasi: 18:45</span>
-                            <span>Ditonton: 1.5K</span>
-                        </div>
+                            <span>Durasi: 15:15</span>
+                         </div>
                     </div>
                 </div>
                 
@@ -851,11 +854,19 @@
     <!-- Video Modal -->
     <div class="lightbox" id="video-modal">
         <button class="lightbox-close" id="video-close">&times;</button>
-        <div class="video-placeholder" style="width: 80%; height: 70%; background: #000; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-            Video Player
-        </div>
+
+        <div id="video-frame-container" style="
+            width: 80%;
+            height: 70%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        "></div>
+
         <div class="lightbox-caption" id="video-caption">Video Tutorial</div>
     </div>
+
     
     <footer>
         <div class="container">
@@ -885,9 +896,9 @@
         });
         
         // Video thumbnail click
-        const videoThumbnails = document.querySelectorAll('.video-thumbnail');
-        const videoModal = document.getElementById('video-modal');
-        const videoClose = document.getElementById('video-close');
+        // const videoThumbnails = document.querySelectorAll('.video-thumbnail');
+        // const videoModal = document.getElementById('video-modal');
+        // const videoClose = document.getElementById('video-close');
         
         videoThumbnails.forEach(thumbnail => {
             thumbnail.addEventListener('click', () => {
@@ -965,6 +976,47 @@
             }
         });
     </script>
-</body>
+    <script>
+   const videoThumbnails = document.querySelectorAll('.video-thumbnail');
+const videoModal = document.getElementById('video-modal');
+const videoClose = document.getElementById('video-close');
+const videoContainer = document.getElementById('video-frame-container');
 
+videoThumbnails.forEach(thumbnail => {
+    thumbnail.addEventListener('click', () => {
+
+        const videoSrc = thumbnail.getAttribute('data-src'); // pk m.mp4
+        const videoTitle = thumbnail.closest('.video-card').querySelector('.video-title').textContent;
+
+        // Masukkan video ke dalam modal
+        videoContainer.innerHTML = `
+            <video width="100%" height="100%" controls autoplay>
+                <source src="${videoSrc}" type="video/mp4">
+                Browser Anda tidak mendukung video.
+            </video>
+        `;
+
+        // Set caption
+        document.getElementById('video-caption').textContent = videoTitle;
+
+        // Tampilkan modal
+        videoModal.classList.add('active');
+    });
+});
+
+// Tutup modal & hapus video (stop)
+videoClose.addEventListener('click', () => {
+    videoModal.classList.remove('active');
+    videoContainer.innerHTML = ""; 
+});
+
+videoModal.addEventListener('click', (e) => {
+    if (e.target === videoModal) {
+        videoModal.classList.remove('active');
+        videoContainer.innerHTML = "";
+    }
+});
+
+</script>
+</body>
 </html>
